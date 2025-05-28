@@ -1,124 +1,226 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@600&display=swap');
+/* Batch File Creator - Авторский стиль GENKACODER */
+:root {
+  --primary: #2a2f4a;
+  --secondary: #4a3f7a;
+  --accent: #7a4f9e;
+  --text-light: #f0e6ff;
+  --text-dark: #1a1a2e;
+  --danger: #e94560;
+  --success: #00b894;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
 
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
-}
-
-.sidenav {
-  height: 100%;
-  width: 320px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background: linear-gradient(45deg, rgb(211, 132, 14), rgb(199, 88, 31));
+  font-family: 'Fira Code', monospace, 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f5f5f7;
+  color: var(--text-dark);
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-.sidenav h1 {
-  text-align: center;
-  color: white;
-  cursor: default;
-  font-family: 'Merriweather Sans', sans-serif;
-  font-size: 35px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-top: 0;
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+/* Сайдбар в стиле терминала */
+.sidenav {
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+  z-index: 100;
+  padding: 20px 0;
+  border-right: 3px solid var(--accent);
 }
 
-.sidenav p {
+.sidenav h1 {
+  color: var(--text-light);
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed var(--accent);
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  font-weight: 700;
 }
 
 .sidenav img {
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-.sidenav .menu-tab a {
-  background: rgba(0, 0, 0, 0.2);
-  margin: 10px;
-  margin-top: 20px;
-  cursor: pointer;
-  text-align: left;
-  padding: 6px 8px 6px 20px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #f1f1f1;
   display: block;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 20px rgba(122, 79, 158, 0.5);
+  object-fit: cover;
 }
 
-.sidenav .menu-tab a:hover {
-  opacity: 0.7;
+.menu-tab {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
 }
 
+.menu-tab a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 5px;
+  background: rgba(0,0,0,0.2);
+  border-left: 4px solid var(--accent);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.menu-tab a:hover {
+  background: rgba(122, 79, 158, 0.3);
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.menu-tab a::before {
+  content: ">";
+  margin-right: 10px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Основной контент в стиле IDE */
 .content {
-  margin-left: 360px;
-  font-size: 20px;
-  padding: 0 10px;
+  margin-left: 300px;
+  padding: 40px;
+  min-height: 100vh;
+  background-color: #fff;
+  box-shadow: inset 5px 0 15px rgba(0,0,0,0.05);
 }
 
 .content h2 {
-  padding-bottom: 20px;
+  color: var(--primary);
+  position: relative;
+  padding-bottom: 10px;
+  font-size: 1.8rem;
+  margin-top: 30px;
+}
+
+.content h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.content ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 .content li {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  padding: 8px 0;
+  position: relative;
+  padding-left: 25px;
 }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+.content li::before {
+  content: "◈";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
 }
 
-.download-tab p {
-  margin-top: 100px;
-  margin-bottom: 30px;
-}
-
-.about-tab {
-  background: none;
-  margin-right: 100px;
-}
-
+/* Стиль кнопки как в VS Code */
 .btn {
-  text-align: center;
-  background: #18c724;
-  color: white;
-  cursor: pointer;
-  padding: 15px;
-  text-decoration: none;
   display: inline-block;
+  background: var(--success);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-left: 15px;
 }
 
 .btn:hover {
-  opacity: 0.7;
+  background: #00a884;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
+/* Стиль для блока "О программе" */
+.about-tab {
+  background: rgba(42, 47, 74, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* Стиль для блока версий */
+.download-tab p {
+  background: rgba(42, 47, 74, 0.03);
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Футер */
 .footer {
-  background: none;
-  color: black;
-  padding: 10px;
-  padding-top: 30px;
-  float: right;
+  margin-top: 50px;
+  text-align: right;
+  color: #666;
+  font-size: 0.8rem;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
 }
 
-.sidenav .ad-img {
-  margin-left: 10px;
-  margin-top: 25px;
-  box-shadow: none; 
-  width: 300px;
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 3px solid var(--accent);
+  }
+  
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+  
+  .menu-tab {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .menu-tab a {
+    margin: 5px;
+    font-size: 0.85rem;
+  }
 }
 
-.sidenav .ad-img:hover {
-  opacity: 0.7;
+/* Анимации */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(122, 79, 158, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(122, 79, 158, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(122, 79, 158, 0); }
+}
+
+.sidenav img:hover {
+  animation: pulse 1.5s infinite;
 }
